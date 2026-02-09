@@ -1,32 +1,32 @@
-<html>
-  <head>
-    <title>Potin en détail</title>
-  </head>
-  <body>
-    <h1>Page du potin</h1>
+<div class="card mb-4 shadow-lg">
+  <div class="card-header bg-primary text-white">
+    Potin n°<%= id %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p class="mb-4 display-6">"<%= gossip.content %>"</p>
+      <footer class="blockquote-footer">Écrit par <cite title="Source Title"><%= gossip.author %></cite></footer>
+    </blockquote>
     
-    <div class="gossip-card">
-      <h2>Auteur : <%= gossip.author %></h2>
-      <p>
-        "<%= gossip.content %>"
-      </p>
+    <div class="mt-4">
+      <a href="/gossips/<%= id %>/edit/" class="btn btn-warning btn-sm">Modifier</a>
+      <a href="/" class="btn btn-secondary btn-sm">Retour</a>
     </div>
+  </div>
+</div>
 
-    <hr />
-    <h3>Commentaires</h3>
+<div class="card bg-light p-3">
+  <h5>💬 Commentaires</h5>
+  <hr>
+  
+  <% comments.each do |comment| %>
+    <div class="alert alert-secondary">
+      <%= comment.content %>
+    </div>
+  <% end %>
 
-    <% comments.each do |comment| %>
-      <p><em>Commentaire :</em> <%= comment.content %></p>
-    <% end %>
-
-    <h3>Ajouter un commentaire</h3>
-    <form action='/gossips/<%= id %>/comments/' method='POST'>
-      <input type='text' name='comment_content' placeholder='Ton commentaire...' />
-      <input type='submit' value='Envoyer' />
-    </form>
-
-    <br/>
-    <a href="/gossips/<%= id %>/edit/">Editer ce potin</a>
-    <a href="/">Retour à l'accueil</a>
-  </body>
-</html>
+  <form action='/gossips/<%= id %>/comments/' method='POST' class="d-flex mt-3">
+    <input type='text' name='comment_content' class="form-control me-2" placeholder='Réagir à ce potin...' required />
+    <button type='submit' class="btn btn-dark">Envoyer</button>
+  </form>
+</div>

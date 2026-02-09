@@ -9,6 +9,28 @@ The goal is to transition from terminal-based Ruby programs to a real web applic
 * Bundler
 * Gems: `sinatra`, `puma`, `csv`, `rerun` (optional but recommended for dev)
 
+
+## File Structure
+
+
+```
+├── 📁 db
+│   ├── 📄 comment.csv
+│   └── 📄 gossip.csv
+├── 📁 lib
+│   ├── 📁 views
+│   │   ├── 📄 edit.erb
+│   │   ├── 📄 index.erb
+│   │   ├── 📄 new_gossip.erb
+│   │   └── 📄 show.erb
+│   ├── 💎 comment.rb
+│   ├── 💎 controller.rb
+│   └── 💎 gossip.rb
+├── 📄 Gemfile
+├── 📝 README.md
+└── 📄 config.ru
+```
+
 ## Installation
 
 1.  **Clone the repository**:

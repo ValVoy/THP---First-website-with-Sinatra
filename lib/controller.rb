@@ -3,6 +3,7 @@ require 'gossip'
 require 'comment'
 
 class ApplicationController < Sinatra::Base
+  set :views, File.expand_path('views', __dir__)
   get '/' do
     erb :index, locals: {gossips: Gossip.all}
   end

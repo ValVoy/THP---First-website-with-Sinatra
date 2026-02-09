@@ -1,21 +1,20 @@
-<html>
-  <head>
-    <title>The Gossip Project</title>
-  </head>
-  <body>
-    <h1>Mon super site de gossip !</h1>
-    <p>Bienvenue dans la matrice.</p>
+<div class="text-center mb-5">
+  <h1 class="display-4">Bienvenue sur The Gossip Project</h1>
+  <p class="lead">Le seul endroit où les secrets ne le restent pas.</p>
+</div>
 
-    <% gossips.each_with_index do |gossip, id| %>
-      <div class="gossip-card">
-        <p>
-          <strong><%= gossip.author %></strong> a dit :<br/>
-          <%= gossip.content %>
-        </p>
-        <a href="/gossips/<%= id %>/">Voir le potin en détail</a>
+<div class="row">
+  <% gossips.each_with_index do |gossip, id| %>
+    <div class="col-md-4 mb-4"> <div class="card shadow-sm gossip-card h-100">
+        <div class="card-body">
+          <h5 class="card-title">🕵️ <%= gossip.author %></h5>
+          <p class="card-text">"<%= gossip.content %>"</p>
+        </div>
+        <div class="card-footer bg-transparent border-top-0">
+          <a href="/gossips/<%= id %>/" class="btn btn-primary btn-sm w-100">Voir le détail</a>
+        </div>
       </div>
-      <hr/> <% end %>
-    
-    <a href="/gossips/new/">Ajouter un gossip</a>
-  </body>
-</html>
+
+    </div>
+  <% end %>
+</div>
