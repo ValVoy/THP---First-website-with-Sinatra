@@ -91,6 +91,17 @@ I went further by implementing a commenting system, creating a **One-to-Many rel
     * **Foreign Key Logic:** Comments are stored with the `gossip_id` they belong to.
     * **Display:** When opening a Gossip page, the app filters the CSV to display only the relevant comments associated with that specific Gossip ID.
 
+### 4. 🎨 UI/UX & Design Overhaul (Bonus)
+I didn't want the app to look like a raw HTML document, so I implemented a modern interface using **Bootstrap 5**.
+
+* **Master Layout (`layout.erb`):** Instead of repeating the `<head>` and `navbar` code in every file, I used a master layout file.
+    * **Why?** To respect the **DRY (Don't Repeat Yourself)** principle.
+    * **How?** The `layout.erb` contains the global structure, and the `yield` keyword dynamically injects the content of the requested view (Index, Show, Edit).
+* **Responsive Design:** The app uses Bootstrap's grid system (`row`, `col-md-4`) to ensure it looks good on both desktop and mobile.
+* **Visual Components:**
+    * **Cards:** For displaying gossips cleanly.
+    * **Navbar:** For easy navigation between Home and Creation pages.
+    * **Styled Forms:** Better user experience for input fields.
 ---
 
 ## Core Web Concepts Learned
