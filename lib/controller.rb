@@ -23,8 +23,13 @@ class ApplicationController < Sinatra::Base
   #   redirect '/'
 
   get '/gossips/:id/' do
-    id = params['id'].to_i
-    erb :show, locals: {gossip: Gossip.find(id)}
+    erb :show, locals: {gossip: Gossip.find(params['id'].to_i), id: params['id'].to_i}
   end
+
+  get '/gossips/:id/edit/' do
+    id = params['id'].to_i
+    erb :edit, locals: {id: id, gossip: Gossip.find(id)}
+  end
+
 
 end

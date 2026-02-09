@@ -6,12 +6,13 @@
     <h1>Mon super site de gossip !</h1>
     <p>Bienvenue dans la matrice.</p>
 
-    <% gossips.each do |gossip| %>
-      <div class="gossip">
+    <% gossips.each_with_index do |gossip, id| %>
+      <div class="gossip-card">
         <p>
           <strong><%= gossip.author %></strong> a dit :<br/>
           <%= gossip.content %>
         </p>
+        <a href="/gossips/<%= id %>/">Voir le potin en détail</a>
       </div>
       <hr/> <% end %>
     
