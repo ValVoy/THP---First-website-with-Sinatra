@@ -5,6 +5,15 @@
   <body>
     <h1>Mon super site de gossip !</h1>
     <p>Bienvenue dans la matrice.</p>
+
+    <% gossips.each do |gossip| %>
+      <div class="gossip">
+        <p>
+          <strong><%= gossip.author %></strong> a dit :<br/>
+          <%= gossip.content %>
+        </p>
+      </div>
+      <hr/> <% end %>
     
     <a href="/gossips/new/">Ajouter un gossip</a>
   </body>
