@@ -12,6 +12,19 @@
       </p>
     </div>
 
+    <hr />
+    <h3>Commentaires</h3>
+
+    <% comments.each do |comment| %>
+      <p><em>Commentaire :</em> <%= comment.content %></p>
+    <% end %>
+
+    <h3>Ajouter un commentaire</h3>
+    <form action='/gossips/<%= id %>/comments/' method='POST'>
+      <input type='text' name='comment_content' placeholder='Ton commentaire...' />
+      <input type='submit' value='Envoyer' />
+    </form>
+
     <br/>
     <a href="/gossips/<%= id %>/edit/">Editer ce potin</a>
     <a href="/">Retour à l'accueil</a>

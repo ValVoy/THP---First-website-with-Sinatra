@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'gossip'
+require 'comment'
 
 class ApplicationController < Sinatra::Base
   get '/' do
@@ -23,7 +24,12 @@ class ApplicationController < Sinatra::Base
   #   redirect '/'
 
   get '/gossips/:id/' do
-    erb :show, locals: {gossip: Gossip.find(params['id'].to_i), id: params['id'].to_i}
+    id = params['id'].to_i
+    erb :show, locals: {
+      gossip: Gossip.find(id), 
+      id: id, 
+      comments: Comment.all_with_id(id) 
+    }
   end
 
   get '/gossips/:id/edit/' do
@@ -34,6 +40,11 @@ class ApplicationController < Sinatra::Base
   post '/gossips/:id/edit/' do
     Gossip.update(params['id'].to_i, params["gossip_author"], params["gossip_content"])
     redirect '/'
+  end
+
+  post '/gossips/:id/comments/' do
+    Comment.new(params['id'].to_i, params['comment_content']).save
+    redirect "/gossips/#{params['id']}/"
   end
 
 
