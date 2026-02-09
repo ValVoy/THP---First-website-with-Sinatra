@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'gossip'
 
 class ApplicationController < Sinatra::Base
   get '/' do
@@ -10,8 +11,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/gossips/new/' do
-    puts "Ce programme ne fait rien pour le moment, on va donc afficher un message dans le terminal"
-end
+    Gossip.new(params["gossip_author"], params["gossip_content"]).save
+    redirect '/'
+  end
 
+  # On peut aussi écrire : 
+  # post '/gossips/new/' do
+  #   author = params["gossip_author"]
+  #   content = params["gossip_content"]
+  #   Gossip.new(author, content).save
+  #   redirect '/'
 
 end
